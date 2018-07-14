@@ -1,10 +1,11 @@
 FROM ubuntu
 
+ENV PATH /root/.local/bin:$PATH
+
 RUN apt-get update && \
     apt-get install -y python curl apt-transport-https ca-certificates software-properties-common && \
     curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py --user && \
-    export PATH=/root/.local/bin:$PATH && \
     pip install awscli --upgrade --user && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     apt-key fingerprint 0EBFCD88 && \
